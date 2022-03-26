@@ -1,3 +1,5 @@
+import math
+
 def print_truth_table(n,y,value):
     # n is the number of inputs
     # y is an array of outputs in an exact order
@@ -22,12 +24,53 @@ def print_truth_table(n,y,value):
             a,b,c,y,value = v
             print ("{:<3} {:<3} {:<3} {:<3} {:<3}".format(a, b, c, y, value))
 
+def score(n,y,value):
+    # n is the number of inputs
+    # y is an array of outputs
+    # value is an array of the values associated with each y
 
-def truth_table(a,b,c,netlist):
-    for i in netlist:
-        gate = i[0:3]
-    return y
+    lowestON = 0
+    highestOFF = 0
+    if n == 2:
+        for i in range(4):
+            if y[i] == True:
+                if lowestON == 0:
+                    lowestON = value[i]
+                elif value[i] < lowestON:
+                    lowestON = value[i]
+            if y[i] == False:
+                if highestOFF == 0:
+                    highestOFF = value[i]
+                elif value[i] > highestOFF:
+                    highestOFF = value[i]
+        ratio = lowestON / highestOFF
+        score = math.log(ratio,10)
+
+    if n == 3: 
+        for i in range(8):
+            if y[i] == True:
+                if lowestON == 0:
+                    lowestON = value[i]
+                elif value[i] < lowestON:
+                    lowestON = value[i]
+            if y[i] == False:
+                if highestOFF == 0:
+                    highestOFF = value[i]
+                elif value[i] > highestOFF:
+                    highestOFF = value[i]
+        ratio = lowestON / highestOFF
+        score = math.log(ratio,10)
+    
+    return score
 
 y = [True,False,True,False,True,False,True,False]
 value = [0.1,0.5,18,3,67,3,1,.05]
 print_truth_table(3,y,value)
+
+print('\n')
+
+y = [False,True,True,False]
+value = [0.3,0.4,10,2]
+print_truth_table(2,y,value)
+score = score(2,y,value)
+print('Score is: ', score)
