@@ -24,7 +24,7 @@ def print_truth_table(n,y,value):
             a,b,c,y,value = v
             print ("{:<3} {:<3} {:<3} {:<3} {:<3}".format(a, b, c, y, value))
 
-def score(n,y,value):
+def calculate_score(n,y,value):
     # n is the number of inputs
     # y is an array of outputs
     # value is an array of the values associated with each y
@@ -63,14 +63,18 @@ def score(n,y,value):
     
     return score
 
+
+
 y = [True,False,True,False,True,False,True,False]
 value = [0.1,0.5,18,3,67,3,1,.05]
 print_truth_table(3,y,value)
+score1 = calculate_score(3,y,value)
+print('Score is: ', score1)
 
 print('\n')
 
 y = [False,True,True,False]
-value = [0.3,0.4,10,2]
+value = [0.01,15,16,0.02]
 print_truth_table(2,y,value)
-score = score(2,y,value)
+score = calculate_score(2,y,value)
 print('Score is: ', score)
