@@ -24,6 +24,15 @@ def print_truth_table(n,y,value):
             a,b,c,y,value = v
             print ("{:<3} {:<3} {:<3} {:<3} {:<3}".format(a, b, c, y, value))
 
+
+def response_function(model,input):
+    # model is the name of the model that corresponds to the specific gate
+    # [0] is ymax, [1] is ymin, [2] is K , [3] is n in the parameters array
+    diff = model['parameters'][0]['value'] - model['parameters'][1]['value']
+    output = diff / (1 + (input / model['parameters'][2]['value'])^model['parameters'][3]['value'])
+    output = model['parameters'][1]['value'] + output
+    return output
+
 def calculate_score(n,y,value):
     # n is the number of inputs
     # y is an array of outputs
