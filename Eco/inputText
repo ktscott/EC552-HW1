@@ -1,0 +1,12 @@
+lib.json
+inputfile.json
+3
+NOR(w1,a,b)
+NOR(w2,w1,c)
+NOR(y,w2,w1)
+BA_sensor_model
+IPTG_sensor_model
+aTc_sensor_model
+Gate1_model
+Gate2_model
+Gate3_model
