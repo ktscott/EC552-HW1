@@ -18,7 +18,7 @@ import json
 
 def stretch(model, x):
     # Stretch increases ymax and decreases ymin
-    if x < 1.5:
+    if x <= 1.5:
         model['parameters'][0]['value'] = model['parameters'][0]['value'] * x
         model['parameters'][1]['value'] = model['parameters'][1]['value'] / x
     else: 
@@ -28,7 +28,7 @@ def stretch(model, x):
      
 def increase_slope(model,x):
     # Increases slope of the transfer curve
-    if x < 1.05:
+    if x <= 1.05:
         model['parameters'][3]['value'] = model['parameters'][3]['value'] * x 
     else:
         print('Not a valid input')
@@ -37,7 +37,7 @@ def increase_slope(model,x):
 
 def decrease_slope(model,x):
     # Decreases slope of the transfer curve
-    if x < 1.05:
+    if x <= 1.05:
         model['parameters'][3]['value'] = model['parameters'][3]['value'] / x
     else:
         print('Not a valid input')
