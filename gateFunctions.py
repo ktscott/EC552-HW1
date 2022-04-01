@@ -4,17 +4,19 @@
 
 import json
 
-# ymax is the max value of the gate
-# ymin is the min value of the gate
-# n is the slope of the curve / transfer function
-# K = Kd of the curve of the distance between 0 to the mid-point of the max slope in the x axis
+'''
+ymax is the max value of the gate
+ymin is the min value of the gate
+n is the slope of the curve / transfer function
+K = Kd of the curve of the distance between 0 to the mid-point of the max slope in the x axis
 
-# Parameters array info
-# [0] is ymax, [1] is ymin, [2] is K , [3] is n
+Parameters array info
+[0] is ymax, [1] is ymin, [2] is K , [3] is n
 
-# model is the specific model associated with the gate
-# x is the value of how you want the parameter to change
-# updates the model with the new adjusted parameter
+model is the specific model associated with the gate
+x is the value of how you want the parameter to change
+updates the model with the new adjusted parameter
+'''
 
 def stretch(model, x):
     # Stretch increases ymax and decreases ymin
