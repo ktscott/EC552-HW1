@@ -20,7 +20,7 @@ updates the model with the new adjusted parameter
 
 def stretch(model, x):
     # Stretch increases ymax and decreases ymin
-    newModel = model
+    newModel = dict(model)
     if x <= 1.5:
         newModel['parameters'][0]['value'] = model['parameters'][0]['value'] * x
         newModel['parameters'][1]['value'] = model['parameters'][1]['value'] / x
@@ -31,7 +31,7 @@ def stretch(model, x):
      
 def increase_slope(model,x):
     # Increases slope of the transfer curve
-    newModel=model
+    newModel=dict(model)
     if x <= 1.05:
         newModel['parameters'][3]['value'] = model['parameters'][3]['value'] * x 
     else:
@@ -41,7 +41,7 @@ def increase_slope(model,x):
 
 def decrease_slope(model,x):
     # Decreases slope of the transfer curve
-    newModel = model
+    newModel = dict(model)
     if x <= 1.05:
         newModel['parameters'][3]['value'] = model['parameters'][3]['value'] / x
     else:
@@ -51,7 +51,7 @@ def decrease_slope(model,x):
 
 def stronger_promoter(model,x):
     # Stronger promoter increases both ymax and ymin
-    newModel = model
+    newModel = dict(model)
     newModel['parameters'][0]['value'] = model['parameters'][0]['value'] * x
     newModel['parameters'][1]['value'] = model['parameters'][1]['value'] * x
     
@@ -60,7 +60,7 @@ def stronger_promoter(model,x):
 
 def weaker_promoter(model,x):
     # Weaker promoter decreases both ymax and ymin
-    newModel = model
+    newModel = dict(model)
     newModel['parameters'][0]['value'] = model['parameters'][0]['value'] / x
     newModel['parameters'][1]['value'] = model['parameters'][1]['value'] / x
     
@@ -68,14 +68,14 @@ def weaker_promoter(model,x):
 
 def stronger_rbs(model,x):
     # Stronger RBS decreases the value of K
-    newModel = model
+    newModel = dict(model)
     newModel['parameters'][2]['value'] = model['parameters'][2]['value'] / x
     
     return newModel
 
 def weaker_rbs(model,x):
     # Weaker RBS increases the value of K
-    newModel = model
+    newModel = dict(model)
     newModel['parameters'][2]['value'] = model['parameters'][2]['value'] * x
     
     return newModel
