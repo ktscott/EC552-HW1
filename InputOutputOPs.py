@@ -42,11 +42,8 @@ def getTT(netlist, inputs, models, print_netlist = False):
     '''
     # 'inputs' input will be a 6-long list, identifying low and high value for each
 
-    out = [False]*8
-    values = [0]*8
-    a_in = inputs[a]
-    b_in = inputs[2+b]
-    c_in = inputs[4+c]
+    out = [False for _ in range(8)]
+    values = [0 for _ in range(8)]
     # Each wire will be represented as a string of the formula to get its value
     # e.g. if "NOT(0Wire15990,a)", then in the dictionary you will find:
     #    wires[0Wire15990] = "(not(a))"
@@ -99,6 +96,9 @@ def getTT(netlist, inputs, models, print_netlist = False):
         for b in [False,True]:
             for c in [False,True]:
                 out[count] = eval(wires['y'][0])
+                a_in = inputs[a]
+                b_in = inputs[2+b]
+                c_in = inputs[4+c]
                 values[count] = eval(wires['y'][1])
                 count += 1
 
